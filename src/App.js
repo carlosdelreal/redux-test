@@ -37,8 +37,8 @@ const defaultState = {
 // Reducer
 const greeting = (state = defaultState, action) => {
 	switch (action.type) {
-		case 'GREET_ME':
-			return {...state, welcome: 'Hi Carlos!'};
+		case 'GREET_NAME':
+			return {...state, welcome: `Hello ${action.name}`};
 		case 'GREET_WORLD':
 			return {...state, welcome: 'Hello World'};
 		default:
@@ -52,9 +52,12 @@ const store = createStore(greeting);
 // log with initial state
 console.log(store.getState());
 
+const name = 'something coming back from an API';
+
 // Actions
 store.dispatch({
-	type: 'GREET_ME'
+	type: 'GREET_NAME',
+	name
 });
 
 // log after action is dispatched
